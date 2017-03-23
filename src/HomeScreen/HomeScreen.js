@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { AppRegistry, Image, Text, View, StyleSheet } from 'react-native';
+import { AppRegistry, Text, View, StyleSheet } from 'react-native';
+import Image from 'react-native-image-progress';
+import ProgressCircle from 'react-native-progress/Circle';
 import SwipeCards from 'react-native-swipe-cards';
 
 import * as actionCreators from '../actions';
-
-// temporarily hardcoded
-const dogPhoto1 = 'https://i.redditmedia.com/t1KLBI5M8dhEvR0rNjDaOrHNLIrSxomY0Kp29zjeijc.jpg?s=5d60f4a8695f13ca2a0d7da4c008c288';
-const dogPhoto2 = 'https://i.redditmedia.com/Bi9zaToQzQurkI7SvweFYiasebXnifkch2tNSNVxp10.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=960&amp;s=8828ef2382bf8d775263f86a6b3b2ec4';
-
-const data = [dogPhoto1, dogPhoto2];
-
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -31,6 +26,8 @@ export const PhotoCard = ({ imageUri }) => (
     <Image
       style={styles.image}
       source={{ uri: imageUri }}
+      indicator={ProgressCircle}
+
     />
   </View>
 );
@@ -39,6 +36,7 @@ export const PhotoCard = ({ imageUri }) => (
   state => ({
     items: state.items,
     itemsById: state.itemsById,
+    fetching: state.fetching,
   }),
   dispatch => bindActionCreators({
     fetchItems: actionCreators.fetchItems,
@@ -54,8 +52,16 @@ export default class HomeScreen extends Component {
   }
 
   render() {
-    const { items, itemsById } = this.props;
+    const { items, itemsById, fetching } = this.props;
     const cards = items && items.map(item => itemsById[item]);
+
+    if (fetching) {
+      return (
+        <View style={styles.wrapper}>
+          <ProgressCircle />
+        </View>
+      );
+    }
 
     return (
       <View style={styles.wrapper}>

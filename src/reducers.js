@@ -4,6 +4,7 @@ const initialState = {
   items: [],
   itemsById: {},
   interactions: [],
+  fetching: false,
 };
 
 const itemsByIdReducer = (state, action) => {
@@ -35,11 +36,22 @@ const itemReducer = (state, action) => {
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
+    case types.FETCH_ITEMS_START:
+      return {
+        ...state,
+        fetching: true,
+      };
     case types.FETCH_ITEMS_SUCCESS:
       return {
         ...state,
         items: itemReducer(state.items, action),
         itemsById: itemsByIdReducer(state.itemsById, action),
+        fetching: false,
+      };
+    case types.FETCH_ITEMS_ERROR:
+      return {
+        ...state,
+        fetching: false,
       };
     default:
       return state;
