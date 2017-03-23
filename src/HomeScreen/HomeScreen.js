@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
   },
+  spinner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export const PhotoCard = ({ imageUri }) => (
@@ -27,7 +32,6 @@ export const PhotoCard = ({ imageUri }) => (
       style={styles.image}
       source={{ uri: imageUri }}
       indicator={ProgressCircle}
-
     />
   </View>
 );
@@ -67,7 +71,7 @@ export default class HomeScreen extends Component {
 
     if (fetching) {
       return (
-        <View style={styles.wrapper}>
+        <View style={styles.spinner}>
           <ProgressCircle />
         </View>
       );
