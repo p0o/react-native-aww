@@ -19,6 +19,10 @@
 		"react-test-renderer": "~15.4.1"
 	},
 	"jest": {
-		"preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation)/"
+    ],
+    "setupFiles": ["<rootDir>/jest/mockSetup.js"]
 	}
 }
