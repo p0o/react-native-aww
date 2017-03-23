@@ -3,12 +3,29 @@ import * as types from './actionTypes';
 const initialState = {
   items: [],
   itemsById: {},
-  interactions: [],
+  interactions: {},
   fetching: false,
 };
 
+const interactionsReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.LIKE_ITEM:
+      return {
+        ...state,
+        [action.payload]: { liked: true },
+      };
+    case types.DISLIKE_ITEM:
+      return {
+        ...state,
+        [action.payload]: { liked: false },
+      };
+    default:
+      return state;
+  }
+};
+
 const itemsByIdReducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.FETCH_ITEMS_SUCCESS:
       const listById = {};
       action.payload.forEach(item => { listById[item.id] = item });
@@ -23,7 +40,7 @@ const itemsByIdReducer = (state, action) => {
 };
 
 const itemReducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.FETCH_ITEMS_SUCCESS:
       return [
         ...state,
@@ -52,6 +69,12 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         fetching: false,
+      };
+    case types.LIKE_ITEM:
+    case types.DISLIKE_ITEM:
+      return {
+        ...state,
+        interactions: interactionsReducer(state.interactions, action),
       };
     default:
       return state;

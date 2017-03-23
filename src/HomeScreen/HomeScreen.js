@@ -40,6 +40,8 @@ export const PhotoCard = ({ imageUri }) => (
   }),
   dispatch => bindActionCreators({
     fetchItems: actionCreators.fetchItems,
+    likeItem: actionCreators.likeItem,
+    dislikeItem: actionCreators.dislikeItem,
   }, dispatch)
 )
 export default class HomeScreen extends Component {
@@ -50,6 +52,14 @@ export default class HomeScreen extends Component {
   componentDidMount() {
     this.props.fetchItems();
   }
+
+  handleYup = (card) => {
+    this.props.likeItem(card.id);
+  };
+
+  handleNope = (card) => {
+    this.props.dislikeItem(card.id);
+  };
 
   render() {
     const { items, itemsById, fetching } = this.props;
@@ -68,6 +78,8 @@ export default class HomeScreen extends Component {
         <SwipeCards
           cards={cards}
           renderCard={(card) => <PhotoCard imageUri={card.preview} />}
+          handleYup={this.handleYup}
+          handleNope={this.handleNope}
         />
       </View>
     );

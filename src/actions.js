@@ -36,3 +36,6 @@ export function fetchItems() {
     dispatch(fetchItemsStart());
   };
 }
+
+export const likeItem = createAction(types.LIKE_ITEM);
+export const dislikeItem = createAction(types.DISLIKE_ITEM);
