@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { AppRegistry, Image, Text, View, StyleSheet } from 'react-native';
 import SwipeCards from 'react-native-swipe-cards';
+
+import * as actionCreators from '../actions';
 
 // temporarily hardcoded
 const dogPhoto1 = 'https://i.redditmedia.com/t1KLBI5M8dhEvR0rNjDaOrHNLIrSxomY0Kp29zjeijc.jpg?s=5d60f4a8695f13ca2a0d7da4c008c288';
@@ -31,17 +35,33 @@ export const PhotoCard = ({ imageUri }) => (
   </View>
 );
 
+@connect(
+  state => ({
+    items: state.items,
+    itemsById: state.itemsById,
+  }),
+  dispatch => bindActionCreators({
+    fetchItems: actionCreators.fetchItems,
+  }, dispatch)
+)
 export default class HomeScreen extends Component {
   static navigationOptions = {
     title: 'React Native Aww',
   };
 
+  componentDidMount() {
+    this.props.fetchItems();
+  }
+
   render() {
+    const { items, itemsById } = this.props;
+    const cards = items && items.map(item => itemsById[item]);
+
     return (
       <View style={styles.wrapper}>
         <SwipeCards
-          cards={data}
-          renderCard={(imageUri) => <PhotoCard imageUri={imageUri} />}
+          cards={cards}
+          renderCard={(card) => <PhotoCard imageUri={card.preview} />}
         />
       </View>
     );

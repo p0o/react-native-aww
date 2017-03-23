@@ -1,3 +1,6 @@
-export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
+export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
+export const FETCH_ITEMS_ERROR = 'FETCH_ITEMS_ERROR';
+
 export const LIKE_ITEM = 'LIKE_ITEM';
 export const DISLIKE_ITEM = 'DISLIKE_ITEM';
