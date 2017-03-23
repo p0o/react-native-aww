@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render HomeScreen correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      onMoveShouldSetResponder={[Function]}
+      onMoveShouldSetResponderCapture={[Function]}
+      onResponderEnd={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderReject={[Function]}
+      onResponderRelease={[Function]}
+      onResponderStart={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      onStartShouldSetResponderCapture={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+            Object {
+              "translateY": 0,
+            },
+            Object {
+              "rotate": "0deg",
+            },
+            Object {
+              "scale": 0.5,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "https://i.redditmedia.com/t1KLBI5M8dhEvR0rNjDaOrHNLIrSxomY0Kp29zjeijc.jpg?s=5d60f4a8695f13ca2a0d7da4c008c288",
+            }
+          }
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "height": 300,
+              "justifyContent": "center",
+              "width": 300,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "borderColor": "red",
+          "borderRadius": 5,
+          "borderWidth": 2,
+          "bottom": 20,
+          "left": 20,
+          "opacity": 0,
+          "padding": 20,
+          "position": "absolute",
+          "transform": Array [
+            Object {
+              "scale": 0.5,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+          }
+        }
+      >
+        Nope!
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "borderColor": "green",
+          "borderRadius": 5,
+          "borderWidth": 2,
+          "bottom": 20,
+          "opacity": 0,
+          "padding": 20,
+          "position": "absolute",
+          "right": 20,
+          "transform": Array [
+            Object {
+              "scale": 0.5,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "green",
+            "fontSize": 16,
+          }
+        }
+      >
+        Yup!
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`should render PhotoCard correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": undefined,
+      }
+    }
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "height": 300,
+        "justifyContent": "center",
+        "width": 300,
+      }
+    }
+  />
+</View>
+`;
