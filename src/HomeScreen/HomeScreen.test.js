@@ -3,11 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 // requirements
-import { StackNavigator } from 'react-navigation';
 import SwipeCards from 'react-native-swipe-cards';
 
 // test components
-import { HomeScreen, PhotoCard } from '../src/App.js';
+import HomeScreen, { PhotoCard } from './HomeScreen';
 
 test('should render HomeScreen correctly', () => {
   const tree = renderer.create(
